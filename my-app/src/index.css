@@ -1,3 +1,8 @@
+html {
+  background-color: #2C3039;
+  color: white;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,11 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2C3039;
-  color: white;
   display: flex;
   justify-content: center;
-  flex-direction: column;
 }
 
 code {
@@ -18,45 +20,26 @@ code {
 }
 
 #head {
-  display: flex;
-  justify-content: center;
-  text-decoration: underline;
   font-size: 4em;
 }
-#importantStuff {
-  display: flex;
-  justify-content: center;
-}
-#root {
-  display: flex;
-  justify-content: center;
+
+#tasksTitle {
+  font-size: 3em;
 }
 
-#sep {
-  width: 100%;
-  margin-top: 50px;
+#seperator {
+
 }
 
-#input {
-  border: 3px solid black;
-  background-color: white;
-  font-size: 20px;
-  margin: 10px;
-}
-#addTask {
-  margin: 10px;
-  border: 3px solid black;
-  border-radius: 50px;
+#importantStuff{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #tasks {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-}
-
-#taskTitle {
- font-size: 50px;
- text-decoration: underline;
+  flex-direction: column;
 }
