@@ -1,14 +1,23 @@
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import uniqueId from 'react-html-id';
+import Logo from './trashcan.png'
+
+
 let root = document.getElementById('root')
 
 class App extends Component {
     constructor(props) {
         super(props)
+        uniqueId.enableUniqueIds(this)
         this.state = {
             newTask: [],
-            compare: true
+            compare: true,
+            taskStyle: 'text-decoration: linethrough',
+            
+
         }
     }
 
@@ -29,6 +38,9 @@ class App extends Component {
                         if (addTask.value !== '') {
                             this.setState({ newTask: [...this.state.newTask, addTask.value] })
                             addTask.value = ''
+
+
+
                         } else {
                             alert('You cannot enter a blank task')
                         }
@@ -39,10 +51,25 @@ class App extends Component {
                 <div id='taskArea'>
                     <h1 id='tasksTitle'>Tasks!</h1>
                     {this.state.newTask.map((task, i) => {
-                        return <h2
+
+                        return (<h2 id='returnedTasks'
                             key={i}
-                            onDoubleClick={() => this.removeItem(task)}
-                        >{task}</h2>
+                        // onDoubleClick={() => this.removeItem(task)}
+                        >
+                        <label 
+                            className='ahh'
+                            onClick={() => {
+                                let label = document.getElementsByClassName('ahh')
+                                
+                                label.style = {
+                                    color: 'red',
+                                    textDecoration: 'line-through'
+                                }
+                               
+                            }}>
+                            <input type='checkbox' value="checked" className={i}/>{task}
+                        </label>
+                        <img src={Logo} alt='ahhh' id='image' onClick={() => this.removeItem(task)}></img></h2>)
                     })
                     }
                 </div>
