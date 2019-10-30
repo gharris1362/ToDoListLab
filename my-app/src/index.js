@@ -1,54 +1,54 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import * as serviceWorker from './serviceWorker';
 let root = document.getElementById('root')
-
-
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            newTask: [],
+            compare: true
         }
     }
+
+    removeItem(item) {
+        let newArr = this.state.newTask.filter(arrItem => arrItem !== item)
+        this.setState({ newTask: newArr })
+    }
+
     render() {
         return (
             <React.Fragment>
-                <h1 id='head'> To-Do List</h1>
                 <div id='importantStuff'>
-                    <input placeholder="Enter Task Here" id="input"></input>
-                    <button id='addTask' onClick={() => {
-                        let ahh = document.getElementById('input');
-                        let ahh2 = document.getElementById('tasks');
-                        let ahh3 = document.createElement('br')
-                        let task = ahh.value
-                        if (task === '') { alert('No Task Entered') }
-                        else { ahh2.append(ahh.value, ahh3); ahh.value = '' }
-                    }}>Add</button>
+                    <h1>To-Do List</h1>
+                    <input placeholder='Enter Task Here' id='addTask'></input>
+                    <button id='submitTask' onClick={() => {
+                        let addTask = document.getElementById('addTask');
+                        if (addTask.value !== '') {
+                            this.setState({ newTask: [...this.state.newTask, addTask.value] })
+                            addTask.value = ''
+                        } else {
+                            alert('You cannot enter a blank task')
+                        }
+                    }}>Add!</button>
                 </div>
                 <br />
-                <hr id='seperator' />
-                <div id='tasks'>
-                    <h1 id='tasksTitle'>Tasks</h1>
+                <hr id='break' />
+                <div id='taskArea'>
+                    <h1 id='tasksTitle'>Tasks!</h1>
+                    {this.state.newTask.map((task, i) => {
+                        return <h2
+                            key={i}
+                            onDoubleClick={this.removeItem()}
+                        >{task}</h2>
+                    })
+
+                    }
                 </div>
             </React.Fragment>
         )
     }
-
-
 }
 
-
-
-
-// const element = <App button={<button id='addTask'>Add</button>}/>
-
-
-
-
-
 ReactDOM.render(<App />, root)
-
-
-
