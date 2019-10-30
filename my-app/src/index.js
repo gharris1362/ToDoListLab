@@ -12,9 +12,10 @@ class App extends Component {
         }
     }
 
-    removeItem(item) {
+    removeItem = (item) => {
+        console.log(item);
         let newArr = this.state.newTask.filter(arrItem => arrItem !== item)
-        this.setState({ newTask: newArr })
+        this.setState({ newTask: newArr });
     }
 
     render() {
@@ -40,10 +41,9 @@ class App extends Component {
                     {this.state.newTask.map((task, i) => {
                         return <h2
                             key={i}
-                            onDoubleClick={this.removeItem()}
+                            onDoubleClick={() => this.removeItem(task)}
                         >{task}</h2>
                     })
-
                     }
                 </div>
             </React.Fragment>
